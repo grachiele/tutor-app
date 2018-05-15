@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import { SignIn, SignUp } from './auth';
+import Authorize from './auth/Authorize'
+import PublicRoute from './components/PublicRoute';
+import PrivatePage from './components/PrivatePage';
+import PrivateRoutes from './components/PrivateRoutes'
 
-class App extends Component {
+class App extends React.Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      authenticated: false
+    }
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+        <Switch>
+          <Route exact path="/" component={PublicRoute}/>
+          <Route path="/register" component={SignUp} />
+          <Route path="/signin" component={SignIn} />
+           <PrivateRoutes authStatus={this.state.authenticated} component={PrivatePage} />
+        </Switch>
     );
   }
 }
 
-export default App;
+export default App

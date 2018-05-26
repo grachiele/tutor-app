@@ -12,14 +12,14 @@ features:
   sign-in: !com.amazonaws.mobilehub.v0.SignIn 
     attributes:
       enabled: true
-      optional-sign-in: true
+      optional-sign-in: false
     components:
       sign-in-user-pools: !com.amazonaws.mobilehub.v0.UserPoolsIdentityProvider 
         attributes:
           alias-attributes:
+            - preferred_username
             - email
-            - phone_number
-          mfa-configuration: ON
+          mfa-configuration: OFF
           name: userpool
           password-policy: !com.amazonaws.mobilehub.ConvertibleMap 
             min-length: '8'
@@ -27,5 +27,5 @@ features:
             require-numbers: true
             require-symbols: true
             require-upper-case: true
-name: tutor-app-frontend-2018-05-15-15-19-03
+name: tutor-app-2018-05-26-13-59-40
 region: us-east-1

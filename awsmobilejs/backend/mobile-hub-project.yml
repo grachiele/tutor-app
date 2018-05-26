@@ -9,31 +9,63 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /todos: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/todos-20180526165413.zip
+            codeFilename: uploads/todos-20180526182327.zip
             description: 'Handler for calls to resource path : /todos/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: HId18uADMFW8HKvzzXaBzKVooH/4IqnSvHxeG2Phrsk=
+            hashcode: nCR2pqeK1neZpUvD5xviVZWbcqHQFERLrtOSyGpLeyA=
             memorySize: '128'
-            modified: '2018-05-26T20:54:50.322+0000'
+            modified: '2018-05-26T22:25:26.928+0000'
             name: todos
             runtime: nodejs6.10
             timeout: '3'
-            version: Y_bxw1T4HBBFXcqS.trVUhY1hk0Z2oml
+            version: yiBM0cJhobhYq8ZkUHo21a9fPerDGGJr
           '/todos/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/todos-20180526165413.zip
+            codeFilename: uploads/todos-20180526182327.zip
             description: 'Handler for calls to resource path : /todos/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: HId18uADMFW8HKvzzXaBzKVooH/4IqnSvHxeG2Phrsk=
+            hashcode: nCR2pqeK1neZpUvD5xviVZWbcqHQFERLrtOSyGpLeyA=
             memorySize: '128'
-            modified: '2018-05-26T20:54:50.322+0000'
+            modified: '2018-05-26T22:25:26.928+0000'
             name: todos
             runtime: nodejs6.10
             timeout: '3'
-            version: nPnhkVNce4bAJEqD1x6GCikWhi7qTKzd
+            version: gB3iqY9QRqQnB4MCMIQbkthRt.Q88hmt
+      usersCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: usersCRUD
+          requires-signin: true
+          sdk-generation-stage-name: Development
+        paths:
+          /users: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/users-20180526182327.zip
+            description: 'Handler for calls to resource path : /users/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: vxgLj+WSZOW590D6avsEpqiGAuTxpAKbukX3Wh5ls/Y=
+            memorySize: '128'
+            modified: '2018-05-26T22:25:26.953+0000'
+            name: users
+            runtime: nodejs6.10
+            timeout: '3'
+            version: ZPo5.ZHpX8ru0jIjee1keiuDKScSUDp9
+          '/users/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/users-20180526182327.zip
+            description: 'Handler for calls to resource path : /users/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: vxgLj+WSZOW590D6avsEpqiGAuTxpAKbukX3Wh5ls/Y=
+            memorySize: '128'
+            modified: '2018-05-26T22:25:26.953+0000'
+            name: users
+            runtime: nodejs6.10
+            timeout: '3'
+            version: nnJC7RKf0Ra5ZUtwsKATO9bmZzY3V0FX
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
@@ -55,6 +87,23 @@ features:
             rangeKeyType: N
             tableName: ___DYNAMIC_PREFIX___-todos
             tablePrivacy: public
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              bio: S
+              email: S
+              firstName: S
+              instructor: BOOL
+              lastName: S
+              student: BOOL
+              subjects: L
+              userId: S
+              zip: N
+            hashKeyName: userId
+            hashKeyType: S
+            rangeKeyName: ''
+            rangeKeyType: ''
+            tableName: ___DYNAMIC_PREFIX___-users
+            tablePrivacy: protected
   mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
     components:
       analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}

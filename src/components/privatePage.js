@@ -14,7 +14,7 @@ class PrivatePage extends Component {
 
   componentDidMount = async () => {
     try{
-      const data = await Auth.currentAuthenticatedUser()
+      const data = await Auth.currentUserInfo()
       this.setState({user: data})
       const todos = await API.get('todosCRUD', `/todos/${this.state.team}`)
       this.setState({ todos });
@@ -40,6 +40,7 @@ class PrivatePage extends Component {
     this.setState({ todos, team });
   }
       render() {
+        console.log(this.state.user);
         if(this.state.user === false){
           return <Redirect
             to={{

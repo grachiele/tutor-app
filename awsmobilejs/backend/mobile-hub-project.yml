@@ -1,11 +1,60 @@
 --- !com.amazonaws.mobilehub.v0.Project 
 features:
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
+    components:
+      todosCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: todosCRUD
+          requires-signin: false
+          sdk-generation-stage-name: Development
+        paths:
+          /todos: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/todos-20180526165413.zip
+            description: 'Handler for calls to resource path : /todos/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: HId18uADMFW8HKvzzXaBzKVooH/4IqnSvHxeG2Phrsk=
+            memorySize: '128'
+            modified: '2018-05-26T20:54:50.322+0000'
+            name: todos
+            runtime: nodejs6.10
+            timeout: '3'
+            version: Y_bxw1T4HBBFXcqS.trVUhY1hk0Z2oml
+          '/todos/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/todos-20180526165413.zip
+            description: 'Handler for calls to resource path : /todos/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: HId18uADMFW8HKvzzXaBzKVooH/4IqnSvHxeG2Phrsk=
+            memorySize: '128'
+            modified: '2018-05-26T20:54:50.322+0000'
+            name: todos
+            runtime: nodejs6.10
+            timeout: '3'
+            version: nPnhkVNce4bAJEqD1x6GCikWhi7qTKzd
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
       visibility: public-global
     components:
       release: !com.amazonaws.mobilehub.v0.Bucket {}
+  database: !com.amazonaws.mobilehub.v0.Database 
+    components:
+      database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
+        tables:
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              team: S
+              text: S
+              todoId: N
+            hashKeyName: team
+            hashKeyType: S
+            rangeKeyName: todoId
+            rangeKeyType: N
+            tableName: ___DYNAMIC_PREFIX___-todos
+            tablePrivacy: public
   mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
     components:
       analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}
